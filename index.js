@@ -14,7 +14,7 @@ app.get("/oi", (req, res) => {
 const itens = ["Elena Gilbert", "Stefan Salvatore", "Damon Salvatore"];
 
 app.get("/item", (req, res) => {
-    res.status(200).json(itens);
+    res.status(200).json(itens.filter(Boolean));
 })
 
 app.get("/item/:id", (req, res) => {
@@ -29,6 +29,25 @@ app.post("/item", (req, res) => {
     const novoItem = body.nome;
 
     itens.push(novoItem);
+    
+    res.status(200).json();
+})
+
+app.put("/item/:id", (req, res) => {
+    const id = req.params.id;
+
+    const body = req.body;
+    const itemAtualizado = body.nome;
+
+    itens[id-1] = itemAtualizado;
+    
+    res.status(200).json();
+})
+
+app.delete("/item/:id", (req, res) => {
+    const id = req.params.id;
+
+    delete itens[id-1];
     
     res.status(200).json();
 })
