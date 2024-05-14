@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+app.use(express.json())
+
 app.get("/", (req, res) => {
     res.send("Hello world, Dani");
 })
@@ -21,4 +23,14 @@ app.get("/item/:id", (req, res) => {
     const item = itens[id-1];
     res.status(200).json(item);
 })
+
+app.post("/item", (req, res) => {
+    const body = req.body;
+    const novoItem = body.nome;
+
+    itens.push(novoItem);
+    
+    res.status(200).json();
+})
+
 app.listen(3000);
