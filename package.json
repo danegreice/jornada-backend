@@ -1,0 +1,15 @@
+{
+  "name": "jornada-backend",
+  "version": "1.0.0",
+  "description": "Repositório para armazenar códigos feitos na jornada backend do Ocean",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
