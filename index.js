@@ -2,11 +2,11 @@ const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 
 
-//const dbUrl = "mongodb+srv://danielegreice:IVems79OpxSluQcC@cluster0.4zfth2g.mongodb.net"
-//const dbName = "jornada-backend"
+const dbUrl = "mongodb+srv://danielegreice:IVems79OpxSluQcC@cluster0.4zfth2g.mongodb.net"
+const dbName = "jornada-backend"
 
-const dbUrl = "mongodb+srv://admin:JHy9QG6y9kLJItWK@cluster0.jg2n1i9.mongodb.net"
-const dbName = "ocean-jornada-backend-maio-2024"
+//const dbUrl = "mongodb+srv://admin:JHy9QG6y9kLJItWK@cluster0.jg2n1i9.mongodb.net"
+//const dbName = "ocean-jornada-backend-maio-2024"
 
 const client = new MongoClient(dbUrl);
 const main = async () => {
@@ -64,10 +64,10 @@ const main = async () => {
         res.status(200).json();
     })
 
-    app.delete("/item/:id", (req, res) => {
+    app.delete("/item/:id", async (req, res) => {
         const id = req.params.id;
 
-        delete itens[id - 1];
+        await collection.deleteOne({_id: new ObjectId(id)})
 
         res.status(200).json();
     })
