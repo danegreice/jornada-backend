@@ -1,9 +1,12 @@
+require("dotenv").config();
 const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 
+const PORT = process.env.PORT ?? 3333;
 
-const dbUrl = "mongodb+srv://danielegreice:IVems79OpxSluQcC@cluster0.4zfth2g.mongodb.net"
-const dbName = "jornada-backend"
+
+const dbUrl = process.env.DATABASE_URL
+const dbName = process.env.DATABASE_NAME
 
 //const dbUrl = "mongodb+srv://admin:JHy9QG6y9kLJItWK@cluster0.jg2n1i9.mongodb.net"
 //const dbName = "ocean-jornada-backend-maio-2024"
@@ -72,7 +75,7 @@ const main = async () => {
         res.status(200).json();
     })
 
-    app.listen(3000);
+    app.listen(PORT);
 }
 
 main();
